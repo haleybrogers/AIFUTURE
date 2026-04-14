@@ -1,0 +1,100 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Assumption {
+  id              String    @id @default(cuid())
+  title           String
+  description     String
+  category        String    // market, technology, org_structure, pricing, other
+  convictionScore Int       @default(50) // 0-100
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  evidence     Evidence[]
+  comments     Comment[]
+  serviceLinks ServiceAssumptionLink[]
+}
+
+model Evidence {
+  id           String   @id @default(cuid())
+  assumptionId String
+  content      String
+  type         String   // for, against
+  sourceUrl    String?
+  createdAt    DateTime @default(now())
+
+  assumption Assumption @relation(fields: [assumptionId], references: [id], onDelete: Cascade)
+}
+
+model Comment {
+  id           String   @id @default(cuid())
+  assumptionId String
+  author       String
+  content      String
+  createdAt    DateTime @default(now())
+
+  assumption Assumption @relation(fields: [assumptionId], references: [id], onDelete: Cascade)
+}
+
+model Competency {
+  id          String  @id @default(cuid())
+  name        String
+  description String?
+  order       Int     @default(0)
+
+  ratings AutonomyRating[]
+}
+
+model AutonomyRating {
+  id           String   @id @default(cuid())
+  competencyId String
+  timeframe    String   // now, 1yr, 3yr
+  rating       Int      @default(1) // 1-5
+  updatedAt    DateTime @updatedAt
+
+  competency Competency @relation(fields: [competencyId], references: [id], onDelete: Cascade)
+
+  @@unique([competencyId, timeframe])
+}
+
+model ServiceLine {
+  id               String   @id @default(cuid())
+  name             String
+  description      String
+  type             String   // new, restructured
+  currentPricing   String?
+  proposedPricing  String?
+  aiDeliveryModel  String?
+  marketOpportunity String? // small, medium, large
+  status           String   @default("exploring") // exploring, piloting, active, paused
+  notes            String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  assumptionLinks ServiceAssumptionLink[]
+}
+
+model ServiceAssumptionLink {
+  id            String @id @default(cuid())
+  serviceLineId String
+  assumptionId  String
+
+  serviceLine ServiceLine @relation(fields: [serviceLineId], references: [id], onDelete: Cascade)
+  assumption  Assumption  @relation(fields: [assumptionId], references: [id], onDelete: Cascade)
+
+  @@unique([serviceLineId, assumptionId])
+}
+
+model Scenario {
+  id               String   @id @default(cuid())
+  name             String
+  description      String?
+  assumptionStates String   // JSON string of { assumptionId: "true" | "false" | "uncertain" }
+  createdAt        DateTime @default(now())
+}
