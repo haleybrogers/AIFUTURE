@@ -9,6 +9,7 @@ import {
   Building2,
   Layers,
   GitBranch,
+  BookOpen,
 } from "lucide-react";
 
 const tabs = [
@@ -41,6 +42,12 @@ const tabs = [
     href: "/scenarios",
     icon: GitBranch,
     description: "What if?",
+  },
+  {
+    name: "Glossary",
+    href: "/glossary",
+    icon: BookOpen,
+    description: "Definitions",
   },
 ];
 
