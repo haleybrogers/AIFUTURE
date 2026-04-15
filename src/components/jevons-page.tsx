@@ -106,6 +106,18 @@ export function JevonsPage() {
             We use way, way more.
           </span>
         </p>
+        <div className="bg-card rounded-2xl shadow-sm border border-card-border p-5 max-w-xl mx-auto text-left">
+          <p className="text-sm text-muted leading-relaxed">
+            <strong className="text-foreground">Who was Jevons?</strong>{" "}
+            William Stanley Jevons was an English economist in the 1860s.
+            He noticed something strange about coal: as steam engines got more
+            efficient and used <em>less</em> coal per unit of work, England&apos;s
+            total coal consumption went <em>up</em>, not down. People kept
+            finding new uses for cheap energy that didn&apos;t exist before.
+            That counterintuitive pattern — cheaper means more total usage —
+            has repeated with every major resource since.
+          </p>
+        </div>
       </div>
 
       {/* The 5th-grade explanation */}

@@ -167,8 +167,8 @@ export function OrgPage() {
                 "VPs",
                 "Directors",
                 "Managers",
-                "Senior ICs",
-                "Junior ICs",
+                "Senior Team",
+                "Junior Team",
               ].map((layer, i) => (
                 <div
                   key={layer}
