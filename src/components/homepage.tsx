@@ -492,25 +492,165 @@ function PhasedRoadmap() {
   );
 }
 
+/* ─── The Pearmill Edge ─── */
+
+function PearmillEdge() {
+  return (
+    <section className="space-y-8">
+      <div className="space-y-3">
+        <h2 className="text-2xl font-bold tracking-tight">Why Pearmill Wins in This World</h2>
+        <p className="text-muted max-w-2xl">
+          Three things from our internal strategy conversations that define
+          how we think about AI — and why we&apos;re positioned differently.
+        </p>
+      </div>
+
+      <div className="space-y-6">
+        {/* Bell Curve */}
+        <div className="bg-card rounded-2xl shadow-sm border border-card-border p-8">
+          <div className="grid md:grid-cols-5 gap-8 items-center">
+            <div className="md:col-span-3 space-y-4">
+              <h3 className="text-xl font-bold">
+                AI gets you to the middle of the bell curve.
+                <br />
+                <span className="text-accent">We get you to the spikes.</span>
+              </h3>
+              <p className="text-sm text-muted leading-relaxed">
+                Here&apos;s the problem with just using AI: it&apos;s trained on the average
+                of human intelligence. If you accept its first answer, you get
+                average work. Average ads, average copy, average strategy.
+                Everyone using AI without direction ends up in the same mediocre middle.
+              </p>
+              <p className="text-sm text-muted leading-relaxed">
+                What makes our team different is <strong className="text-foreground">taste and judgment</strong>.
+                We don&apos;t accept the first answer. We push, we argue with the AI,
+                we bring decades of experience about what actually works. AI is
+                the tool. Taste is the differentiator. And taste comes from years
+                of watching thousands of ads, studying what converts, and building
+                an instinct for what will break through the noise.
+              </p>
+            </div>
+            <div className="md:col-span-2">
+              <div className="bg-subtle-bg rounded-2xl p-6 text-center space-y-4">
+                <div className="text-6xl font-bold text-muted/20">🔔</div>
+                <div className="space-y-1">
+                  <p className="text-xs text-muted uppercase tracking-wider">Everyone using AI</p>
+                  <p className="text-lg font-bold text-muted">Average results</p>
+                </div>
+                <div className="border-t border-card-border pt-4 space-y-1">
+                  <p className="text-xs text-accent uppercase tracking-wider">Pearmill + AI</p>
+                  <p className="text-lg font-bold text-accent">Exceptional results</p>
+                </div>
+                <p className="text-xs text-muted italic">
+                  &ldquo;To not be average, you need to argue with your assistant.&rdquo;
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Distribution is the moat */}
+        <div className="bg-card rounded-2xl shadow-sm border border-card-border p-8 space-y-4">
+          <h3 className="text-xl font-bold">
+            When anyone can build anything,
+            <span className="text-accent"> distribution is the only moat</span>
+          </h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-3 text-sm text-muted leading-relaxed">
+              <p>
+                Think about Nike. Literally anyone can make a shoe. The technology
+                isn&apos;t special anymore. So how does Nike stay on top? Not by making
+                better shoes — by having <strong className="text-foreground">better distribution</strong>.
+                Athlete partnerships, community stores, cultural relevance.
+                Their marketing IS the product.
+              </p>
+              <p>
+                The same thing is about to happen everywhere. When AI makes it
+                trivially cheap to build any software, any content, any product —
+                the product itself stops being the differentiator. <strong className="text-foreground">How
+                you get it in front of people</strong> becomes the entire game.
+              </p>
+            </div>
+            <div className="space-y-3 text-sm text-muted leading-relaxed">
+              <p>
+                This is great news for Pearmill because <strong className="text-foreground">we
+                are in the distribution business</strong>. We help companies get their
+                products in front of the right people. As the market floods with
+                AI-generated products and content, the companies that win will be
+                the ones with the smartest distribution strategy.
+              </p>
+              <p>
+                There&apos;s even a prediction that <strong className="text-foreground">80% of
+                marketing will become experiential</strong> in the next decade — real-world
+                events, activations, communities — because digital gets so flooded
+                with AI content that people stop trusting it. The human touch
+                becomes the premium.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Soft skills premium */}
+        <div className="bg-card rounded-2xl shadow-sm border border-card-border p-8 space-y-4">
+          <h3 className="text-xl font-bold">
+            The most technical skill in the AI era?
+            <span className="text-accent"> Being a good human.</span>
+          </h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="text-sm text-muted leading-relaxed space-y-3">
+              <p>
+                One of our team members has a friend — an engineer who came back
+                to the field after a decade away. She now uses AI to code, and
+                she&apos;s solving the company&apos;s hardest problems in 10-12 hours a week.
+                Her secret? She&apos;s easier to work with than the veteran engineers.
+                People bring <em>her</em> the important problems because they actually
+                enjoy collaborating with her.
+              </p>
+              <p>
+                The engineers with decades of experience are more skilled technically,
+                but they get fewer of the problems that matter because they&apos;re less
+                approachable. <strong className="text-foreground">Human skills + AI skills = you get the
+                best problems to work on.</strong>
+              </p>
+            </div>
+            <div className="bg-subtle-bg rounded-xl p-5 space-y-3 text-sm">
+              <p className="font-semibold text-foreground">What becomes more valuable as AI gets better:</p>
+              <ul className="space-y-2 text-muted">
+                <li className="flex gap-2"><span className="text-accent">→</span> Relationship building and client trust</li>
+                <li className="flex gap-2"><span className="text-accent">→</span> Taste, judgment, and creative instinct</li>
+                <li className="flex gap-2"><span className="text-accent">→</span> Asking the right questions (not just getting answers)</li>
+                <li className="flex gap-2"><span className="text-accent">→</span> Strategic thinking that AI can&apos;t replicate</li>
+                <li className="flex gap-2"><span className="text-accent">→</span> Being the person people want to work with</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ─── Main Homepage ─── */
 
 export function Homepage() {
   return (
     <div className="space-y-16 pb-12">
       {/* Hero */}
-      <div className="space-y-4 pt-4">
-        <h1 className="text-4xl font-bold tracking-tight">
-          AI is changing everything.
+      <div className="space-y-6 pt-4">
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight">
+          AI gets everyone to the middle.
           <br />
-          <span className="text-accent">Here&apos;s what that actually means.</span>
+          <span className="text-accent">We get you to the edge.</span>
         </h1>
         <p className="text-lg text-muted max-w-2xl">
-          A plain-language guide to what AI is doing right now, where it&apos;s
-          heading, and how Pearmill can turn it into real revenue.
+          Everyone&apos;s using AI now. The question isn&apos;t whether to use it —
+          it&apos;s whether you&apos;ll get average results or exceptional ones.
+          Here&apos;s how we see the next five years, and where the real opportunities are.
         </p>
       </div>
 
       <WhereWeAre />
+      <PearmillEdge />
       <WhereItsGoing />
       <RevenueOpportunities />
       <PhasedRoadmap />

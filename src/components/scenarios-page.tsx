@@ -145,6 +145,36 @@ const staticAssumptions: Assumption[] = [
     ],
     serviceLinks: [],
   },
+  {
+    id: "11", title: "How you distribute becomes how you differentiate",
+    description: "When AI makes it cheap to build any product, the product itself stops being special. Think about shoes — anyone can make a shoe. Nike wins because of how they market, not how they manufacture. The same thing is about to happen in software, content, and services. The companies that win won't have the best product — they'll have the best way of getting it in front of people. This is great news for Pearmill because distribution is literally what we do.",
+    category: "market", convictionScore: 90,
+    evidence: [
+      { id: "e11", content: "Nike doesn't win on shoe technology — they win on athlete partnerships, community stores, and cultural relevance. Their distribution IS their product. (From Nima's strategy discussion)", type: "for", sourceUrl: null },
+      { id: "e12", content: "There's a prediction that 80% of all marketing will become experiential in the next decade because digital gets flooded with AI content and people stop trusting it.", type: "for", sourceUrl: null },
+    ],
+    serviceLinks: [],
+  },
+  {
+    id: "12", title: "Agencies can now grow like software companies",
+    description: "Traditionally, service companies like agencies couldn't grow fast because every new client meant hiring more people. Software companies could add customers for almost no extra cost, so they grew way faster. AI is changing this — agencies can now take on more clients without proportionally hiring more people. The concept is called a 'NeoFirm': a services company that scales more like a tech company. Some VCs are even starting to invest in agencies for the first time because of this.",
+    category: "pricing", convictionScore: 75,
+    evidence: [
+      { id: "e13", content: "Venture capital firms, which historically never invested in agencies, are now funding agency-style businesses because they believe AI will let them scale like software companies. (From Ryan Daniels' NeoFirms essay)", type: "for", sourceUrl: null },
+      { id: "e14", content: "The Petal client at Pearmill already operates close to an outcome-based model — they know the cost per lead in specific geographies and can guarantee results. This is the NeoFirm model in action.", type: "for", sourceUrl: null },
+    ],
+    serviceLinks: [],
+  },
+  {
+    id: "13", title: "Taste becomes the most valuable skill",
+    description: "AI is trained on the average of all human knowledge. If you accept its first answer, you get average results. Everyone using AI without strong opinions ends up with the same mediocre output. The people who have spent years developing taste — knowing what's genuinely good versus just acceptable — become incredibly valuable because they're the ones who push AI past the average and into something exceptional.",
+    category: "org_structure", convictionScore: 85,
+    evidence: [
+      { id: "e15", content: "People using AI heavily without strong creative direction are producing work that all looks and sounds the same — AI groupthink. The average of human intelligence produces average results. (From Nima's strategy discussion)", type: "for", sourceUrl: null },
+      { id: "e16", content: "An engineer returning to the field after a decade uses AI to outperform veterans — not because she's more technical, but because she's better to work with. She gets the hardest problems because people trust her. Human skills + AI = you get the best work.", type: "for", sourceUrl: null },
+    ],
+    serviceLinks: [],
+  },
 ];
 
 /* ─── Revenue Opportunities linked to assumptions ─── */
@@ -275,6 +305,44 @@ const assumptionOpportunities: Record<string, RevenueOpp[]> = {
       pricing: "Cost savings: 30-50% vs. cloud by 2028",
       phase: "6 Months",
       detail: "Short-term GPU shortage means cloud AI costs rise. Buying hardware now = cost advantage over competitors who pay per-token.",
+    },
+  ],
+  "How you distribute becomes how you differentiate": [
+    {
+      icon: Globe,
+      title: "Full-Funnel Distribution Strategy",
+      oneLiner: "Help companies stand out when everyone's product looks the same",
+      pricing: "$5,000 – $20,000/mo",
+      phase: "Now",
+      detail: "When products become commoditized, marketing becomes the product. Comprehensive distribution strategy (not just ads) becomes the premium service.",
+    },
+    {
+      icon: Target,
+      title: "Experiential & Community Marketing",
+      oneLiner: "Real-world activations and community building as digital gets flooded",
+      pricing: "$10,000 – $50,000/project",
+      phase: "6 Months",
+      detail: "80% of marketing predicted to become experiential. Helping brands build real-world presence and community as AI floods digital channels.",
+    },
+  ],
+  "Agencies can now grow like software companies": [
+    {
+      icon: TrendingUp,
+      title: "NeoFirm Scaling Model",
+      oneLiner: "Take on 3-5x more clients without proportionally growing the team",
+      pricing: "Operational model — enables all other opportunities",
+      phase: "Now",
+      detail: "AI reduces the marginal cost of each new client. One person with AI tools can service what used to take a team. This is the model that makes VCs invest in agencies.",
+    },
+  ],
+  "Taste becomes the most valuable skill": [
+    {
+      icon: Paintbrush,
+      title: "Premium Creative Direction",
+      oneLiner: "Position Pearmill as the anti-average — taste you can't get from AI alone",
+      pricing: "$10,000 – $30,000/mo",
+      phase: "Now",
+      detail: "AI gets everyone to mid. Premium clients will pay for the human judgment that pushes creative from average to exceptional. This is the pitch.",
     },
   ],
 };
