@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import {
-  Lightbulb,
+  Zap,
   TrendingUp,
   Building2,
   Layers,
@@ -13,10 +13,10 @@ import {
 
 const tabs = [
   {
-    name: "The Future We Believe In",
+    name: "The Big Picture",
     href: "/",
-    icon: Lightbulb,
-    description: "Assumptions",
+    icon: Zap,
+    description: "AI + Revenue",
   },
   {
     name: "Jevons' Paradox",
@@ -48,7 +48,7 @@ export function Navigation() {
   const pathname = usePathname();
 
   return (
-    <nav className="border-b border-card-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
+    <nav className="border-b border-card-border bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-3">
@@ -73,7 +73,7 @@ export function Navigation() {
                     "flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-all",
                     isActive
                       ? "bg-accent/15 text-accent-light"
-                      : "text-muted hover:text-foreground hover:bg-white/5"
+                      : "text-muted hover:text-foreground hover:bg-hover-bg"
                   )}
                 >
                   <Icon className="w-4 h-4" />

@@ -11,6 +11,11 @@ import {
   TrendingUp,
   Users,
   DollarSign,
+  ChevronDown,
+  Shield,
+  ShieldAlert,
+  Layers,
+  ExternalLink,
 } from "lucide-react";
 import {
   BarChart,
@@ -24,11 +29,26 @@ import {
 } from "recharts";
 import { cn } from "@/lib/utils";
 
+type Evidence = {
+  id: string;
+  content: string;
+  type: string;
+  sourceUrl: string | null;
+};
+
+type ServiceLink = {
+  id: string;
+  serviceLine: { id: string; name: string; status: string };
+};
+
 type Assumption = {
   id: string;
   title: string;
+  description: string;
   category: string;
   convictionScore: number;
+  evidence: Evidence[];
+  serviceLinks: ServiceLink[];
 };
 
 type ServiceLine = {
@@ -95,8 +115,8 @@ function RevenueCalculator() {
         <h2 className="text-xl font-semibold">Revenue Model Calculator</h2>
       </div>
       <p className="text-sm text-muted">
-        Adjust the sliders to compare current vs. AI-augmented vs. outcome-based
-        revenue models.
+        Adjust the sliders to compare three ways of running the business: the way things work now,
+        using AI to do more with the same team, and charging clients for results instead of hours.
       </p>
 
       <div className="grid md:grid-cols-2 gap-6">
@@ -117,7 +137,7 @@ function RevenueCalculator() {
           </div>
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
-              <span className="text-muted">Avg revenue/client/mo</span>
+              <span className="text-muted">Avg monthly fee per client</span>
               <span className="font-mono">
                 ${revPerClient.toLocaleString()}
               </span>
@@ -134,7 +154,7 @@ function RevenueCalculator() {
           </div>
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
-              <span className="text-muted">Production cost reduction</span>
+              <span className="text-muted">How much cheaper AI makes production</span>
               <span className="font-mono">{costReduction}%</span>
             </div>
             <input
@@ -162,7 +182,7 @@ function RevenueCalculator() {
           </div>
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
-              <span className="text-muted">Outcome pricing premium</span>
+              <span className="text-muted">Extra charge for guaranteeing results</span>
               <span className="font-mono">+{outcomePremium}%</span>
             </div>
             <input
@@ -178,7 +198,7 @@ function RevenueCalculator() {
 
         <div className="space-y-4">
           <div className="grid grid-cols-3 gap-3">
-            <div className="bg-white/5 rounded-lg p-3 text-center">
+            <div className="bg-subtle-bg rounded-lg p-3 text-center">
               <p className="text-xs text-muted mb-1">Current</p>
               <p className="font-bold text-sm">
                 ${(currentRevenue / 1000).toFixed(0)}k/mo
@@ -187,15 +207,15 @@ function RevenueCalculator() {
               <p className="text-xs text-muted">{teamSize} people</p>
             </div>
             <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-3 text-center">
-              <p className="text-xs text-cyan-300 mb-1">AI + Time</p>
-              <p className="font-bold text-sm text-cyan-300">
+              <p className="text-xs text-cyan-600 mb-1">AI + hourly billing</p>
+              <p className="font-bold text-sm text-cyan-600">
                 ${(aiRevenue / 1000).toFixed(0)}k/mo
               </p>
               <p className="text-xs text-muted">{aiClients} clients</p>
               <p className="text-xs text-muted">{aiTeamSize} people</p>
             </div>
             <div className="bg-accent/10 border border-accent/20 rounded-lg p-3 text-center">
-              <p className="text-xs text-accent-light mb-1">AI + Outcome</p>
+              <p className="text-xs text-accent-light mb-1">AI + results-based</p>
               <p className="font-bold text-sm text-accent-light">
                 ${(outcomeRevenue / 1000).toFixed(0)}k/mo
               </p>
@@ -211,37 +231,37 @@ function RevenueCalculator() {
                   {
                     name: "Monthly Revenue",
                     Current: currentRevenue,
-                    "AI+Time": aiRevenue,
-                    "AI+Outcome": outcomeRevenue,
+                    "AI + Hourly": aiRevenue,
+                    "AI + Results": outcomeRevenue,
                   },
                 ]}
               >
-                <CartesianGrid strokeDasharray="3 3" stroke="#333" />
-                <XAxis dataKey="name" stroke="#666" fontSize={12} />
-                <YAxis stroke="#666" fontSize={11} tickFormatter={(v) => `$${(v/1000).toFixed(0)}k`} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#e8eaed" />
+                <XAxis dataKey="name" stroke="#9ca3af" fontSize={12} />
+                <YAxis stroke="#9ca3af" fontSize={11} tickFormatter={(v) => `$${(v/1000).toFixed(0)}k`} />
                 <Tooltip
                   contentStyle={{
-                    background: "#1a1a1a",
-                    border: "1px solid #333",
+                    background: "#ffffff",
+                    border: "1px solid #e8eaed",
                     borderRadius: "8px",
                   }}
                   formatter={(value) => `$${Number(value).toLocaleString()}`}
                 />
-                <Bar dataKey="Current" fill="#555" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="AI+Time" fill="#06b6d4" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="AI+Outcome" fill="#6366f1" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="Current" fill="#c4c8cf" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="AI + Hourly" fill="#06b6d4" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="AI + Results" fill="#6366f1" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
 
           <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-3 text-center">
             <p className="text-sm">
-              Revenue per person:{" "}
+              Revenue per team member:{" "}
               <span className="font-bold">
                 ${currentRevenuePerPerson.toLocaleString()}
               </span>{" "}
               &rarr;{" "}
-              <span className="font-bold text-emerald-400">
+              <span className="font-bold text-emerald-600">
                 ${outcomeRevenuePerPerson.toLocaleString()}
               </span>
             </p>
@@ -252,10 +272,27 @@ function RevenueCalculator() {
   );
 }
 
+const categoryLabels: Record<string, string> = {
+  market: "Market",
+  technology: "Technology",
+  org_structure: "Org Structure",
+  pricing: "Pricing",
+  other: "Other",
+};
+
+const categoryColors: Record<string, string> = {
+  market: "bg-emerald-100 text-emerald-700",
+  technology: "bg-cyan-100 text-cyan-700",
+  org_structure: "bg-amber-100 text-amber-700",
+  pricing: "bg-violet-100 text-violet-700",
+  other: "bg-gray-100 text-gray-600",
+};
+
 export function ScenariosPage() {
   const [assumptions, setAssumptions] = useState<Assumption[]>([]);
   const [services, setServices] = useState<ServiceLine[]>([]);
   const [states, setStates] = useState<Record<string, AssumptionState>>({});
+  const [expandedId, setExpandedId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   const fetchData = useCallback(async () => {
@@ -309,9 +346,9 @@ export function ScenariosPage() {
   });
 
   const stateColors: Record<AssumptionState, string> = {
-    true: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30",
-    false: "bg-red-500/20 text-red-300 border-red-500/30",
-    uncertain: "bg-amber-500/20 text-amber-300 border-amber-500/30",
+    true: "bg-emerald-100 text-emerald-800 border-emerald-200",
+    false: "bg-red-100 text-red-800 border-red-200",
+    uncertain: "bg-amber-100 text-amber-800 border-amber-200",
   };
 
   const stateIcons: Record<AssumptionState, typeof ToggleRight> = {
@@ -337,9 +374,10 @@ export function ScenariosPage() {
       <div className="bg-card border border-card-border rounded-2xl p-8 space-y-6">
         <h2 className="text-xl font-semibold">Scenario Builder</h2>
         <p className="text-sm text-muted">
-          Click each assumption to cycle through: <span className="text-emerald-300">True</span> &rarr;{" "}
-          <span className="text-red-300">False</span> &rarr;{" "}
-          <span className="text-amber-300">Uncertain</span>
+          Use the toggle to set each assumption <span className="text-emerald-600">True</span>,{" "}
+          <span className="text-red-600">False</span>, or{" "}
+          <span className="text-amber-600">Uncertain</span>.
+          Click anywhere else on the row to learn more about it.
         </p>
 
         {loading ? (
@@ -353,23 +391,142 @@ export function ScenariosPage() {
             {assumptions.map((a) => {
               const state = states[a.id] || "uncertain";
               const Icon = stateIcons[state];
+              const isExpanded = expandedId === a.id;
+              const forEvidence = a.evidence?.filter((e) => e.type === "for") || [];
+              const againstEvidence = a.evidence?.filter((e) => e.type === "against") || [];
+              const linkedServices = a.serviceLinks || [];
+
               return (
-                <button
-                  key={a.id}
-                  onClick={() => toggleState(a.id)}
-                  className={cn(
-                    "w-full flex items-center gap-3 px-4 py-3 rounded-lg border transition-all text-left",
-                    stateColors[state]
+                <div key={a.id} className={cn(
+                  "rounded-xl border transition-all overflow-hidden",
+                  stateColors[state],
+                  isExpanded && "shadow-md"
+                )}>
+                  {/* Row header */}
+                  <div
+                    className="flex items-center gap-3 px-4 py-3 cursor-pointer"
+                    onClick={() => setExpandedId(isExpanded ? null : a.id)}
+                  >
+                    <button
+                      onClick={(e) => { e.stopPropagation(); toggleState(a.id); }}
+                      className="hover:scale-110 transition-transform flex-shrink-0"
+                      title={`Toggle: ${state}`}
+                    >
+                      <Icon className="w-5 h-5" />
+                    </button>
+                    <span className="text-sm font-medium flex-1">{a.title}</span>
+                    <span className="text-xs opacity-70 capitalize mr-1">{state}</span>
+                    <ChevronDown className={cn(
+                      "w-4 h-4 opacity-50 transition-transform",
+                      isExpanded && "rotate-180"
+                    )} />
+                  </div>
+
+                  {/* Expanded detail panel */}
+                  {isExpanded && (
+                    <div className="bg-white border-t border-current/10 px-5 py-5 space-y-5 text-foreground">
+                      {/* Description + conviction */}
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className={cn("text-xs px-2 py-0.5 rounded-full", categoryColors[a.category] || categoryColors.other)}>
+                            {categoryLabels[a.category] || a.category}
+                          </span>
+                          <span className="text-xs text-muted">
+                            Team conviction: <strong className={cn(
+                              a.convictionScore >= 75 ? "text-emerald-600" :
+                              a.convictionScore >= 40 ? "text-amber-600" : "text-red-500"
+                            )}>{a.convictionScore}%</strong>
+                          </span>
+                        </div>
+                        <p className="text-sm leading-relaxed text-muted">{a.description}</p>
+                        {/* Conviction bar */}
+                        <div className="w-full bg-gray-100 rounded-full h-2">
+                          <div
+                            className={cn(
+                              "h-2 rounded-full transition-all",
+                              a.convictionScore >= 75 ? "bg-emerald-500" :
+                              a.convictionScore >= 40 ? "bg-amber-500" : "bg-red-400"
+                            )}
+                            style={{ width: `${a.convictionScore}%` }}
+                          />
+                        </div>
+                      </div>
+
+                      {/* Evidence */}
+                      {(forEvidence.length > 0 || againstEvidence.length > 0) && (
+                        <div className="grid md:grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <div className="flex items-center gap-1.5 text-xs font-medium text-emerald-600">
+                              <Shield className="w-3.5 h-3.5" />
+                              Evidence For ({forEvidence.length})
+                            </div>
+                            {forEvidence.map((e) => (
+                              <div key={e.id} className="bg-emerald-50 border border-emerald-100 rounded-lg p-2.5 text-xs leading-relaxed">
+                                {e.content}
+                                {e.sourceUrl && (
+                                  <a href={e.sourceUrl} target="_blank" rel="noopener noreferrer"
+                                    className="flex items-center gap-1 text-accent-light mt-1 text-[11px]">
+                                    Source <ExternalLink className="w-2.5 h-2.5" />
+                                  </a>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                          <div className="space-y-2">
+                            <div className="flex items-center gap-1.5 text-xs font-medium text-red-600">
+                              <ShieldAlert className="w-3.5 h-3.5" />
+                              Evidence Against ({againstEvidence.length})
+                            </div>
+                            {againstEvidence.length > 0 ? againstEvidence.map((e) => (
+                              <div key={e.id} className="bg-red-50 border border-red-100 rounded-lg p-2.5 text-xs leading-relaxed">
+                                {e.content}
+                              </div>
+                            )) : (
+                              <p className="text-xs text-muted italic">No counter-evidence yet</p>
+                            )}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* What depends on this */}
+                      {linkedServices.length > 0 && (
+                        <div className="space-y-2">
+                          <div className="flex items-center gap-1.5 text-xs font-medium text-foreground">
+                            <Layers className="w-3.5 h-3.5" />
+                            What depends on this assumption
+                          </div>
+                          <div className="flex flex-wrap gap-2">
+                            {linkedServices.map((link) => (
+                              <span key={link.id}
+                                className={cn(
+                                  "text-xs px-2.5 py-1 rounded-lg border",
+                                  states[a.id] === "false"
+                                    ? "bg-red-50 border-red-200 text-red-700 line-through"
+                                    : "bg-subtle-bg border-card-border text-foreground"
+                                )}>
+                                {link.serviceLine.name}
+                                {states[a.id] === "false" && " — blocked"}
+                              </span>
+                            ))}
+                          </div>
+                          {states[a.id] === "false" && (
+                            <p className="text-xs text-red-600">
+                              Setting this to False blocks {linkedServices.length} service{linkedServices.length > 1 ? "s" : ""} from being viable.
+                            </p>
+                          )}
+                        </div>
+                      )}
+
+                      {/* What this means summary */}
+                      <div className="bg-subtle-bg rounded-lg p-3 text-xs text-muted leading-relaxed">
+                        <strong className="text-foreground">What this means for scenarios:</strong>{" "}
+                        {states[a.id] === "true" && "You believe this will happen. Strategies that depend on this assumption are viable."}
+                        {states[a.id] === "false" && "You believe this won't happen. Any service lines that require this assumption are blocked."}
+                        {states[a.id] === "uncertain" && "You're not sure yet. Service lines that depend on this carry risk — they might work, or they might not."}
+                      </div>
+                    </div>
                   )}
-                >
-                  <Icon className="w-5 h-5 flex-shrink-0" />
-                  <span className="text-sm font-medium flex-1">
-                    {a.title}
-                  </span>
-                  <span className="text-xs opacity-70 capitalize">
-                    {state}
-                  </span>
-                </button>
+                </div>
               );
             })}
           </div>
@@ -379,7 +536,7 @@ export function ScenariosPage() {
         {services.length > 0 && (
           <div className="grid md:grid-cols-2 gap-6 pt-4 border-t border-card-border">
             <div className="space-y-3">
-              <h3 className="text-sm font-medium text-emerald-400 flex items-center gap-2">
+              <h3 className="text-sm font-medium text-emerald-600 flex items-center gap-2">
                 <TrendingUp className="w-4 h-4" />
                 Viable Services ({viableServices.length})
               </h3>
@@ -394,7 +551,7 @@ export function ScenariosPage() {
                       "ml-2 text-xs px-1.5 py-0.5 rounded",
                       s.type === "new"
                         ? "bg-accent/20 text-accent-light"
-                        : "bg-amber-500/20 text-amber-300"
+                        : "bg-amber-100 text-amber-700"
                     )}
                   >
                     {s.type}
@@ -408,7 +565,7 @@ export function ScenariosPage() {
               )}
             </div>
             <div className="space-y-3">
-              <h3 className="text-sm font-medium text-red-400 flex items-center gap-2">
+              <h3 className="text-sm font-medium text-red-600 flex items-center gap-2">
                 <ToggleLeft className="w-4 h-4" />
                 Blocked Services ({blockedServices.length})
               </h3>

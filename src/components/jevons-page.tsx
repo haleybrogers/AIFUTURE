@@ -78,7 +78,7 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <div className="bg-card border border-card-border rounded-2xl p-8 space-y-6">
+    <div className="bg-card rounded-2xl shadow-sm border border-card-border p-8 space-y-6">
       <div className="flex items-center gap-3">
         {icon}
         <h2 className="text-xl font-semibold">{title}</h2>
@@ -110,25 +110,25 @@ export function JevonsPage() {
 
       {/* The 5th-grade explanation */}
       <Section
-        icon={<Snowflake className="w-6 h-6 text-blue-400" />}
+        icon={<Snowflake className="w-6 h-6 text-blue-600" />}
         title="The Ice Story"
       >
         <div className="grid md:grid-cols-2 gap-8">
           <div className="space-y-4 text-base leading-relaxed">
             <p>
-              <strong className="text-blue-400">Imagine it&apos;s 1830.</strong>{" "}
+              <strong className="text-blue-600">Imagine it&apos;s 1830.</strong>{" "}
               Ice is really, really expensive. People cut it from frozen lakes in
               winter and ship it hundreds of miles. Only fancy restaurants and
               rich families can afford it.
             </p>
             <p>
               Then someone invents the{" "}
-              <strong className="text-blue-400">refrigerator</strong>. Now ice
+              <strong className="text-blue-600">refrigerator</strong>. Now ice
               is basically free. You&apos;d think: &ldquo;Well, the ice business is
               dead.&rdquo;
             </p>
             <p>
-              <strong className="text-emerald-400">
+              <strong className="text-emerald-600">
                 But the opposite happened.
               </strong>{" "}
               Suddenly everyone wanted ice. Gas stations, homes, hospitals,
@@ -145,13 +145,13 @@ export function JevonsPage() {
           <div className="h-[300px]">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={iceData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#333" />
-                <XAxis dataKey="year" stroke="#666" fontSize={12} />
-                <YAxis stroke="#666" fontSize={12} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#e8eaed" />
+                <XAxis dataKey="year" stroke="#9ca3af" fontSize={12} />
+                <YAxis stroke="#9ca3af" fontSize={12} />
                 <Tooltip
                   contentStyle={{
-                    background: "#1a1a1a",
-                    border: "1px solid #333",
+                    background: "#ffffff",
+                    border: "1px solid #e8eaed",
                     borderRadius: "8px",
                   }}
                 />
@@ -183,7 +183,7 @@ export function JevonsPage() {
       {/* Historical Examples */}
       <div className="grid md:grid-cols-2 gap-6">
         <Section
-          icon={<Fuel className="w-6 h-6 text-amber-400" />}
+          icon={<Fuel className="w-6 h-6 text-amber-600" />}
           title="Oil & Energy"
         >
           <p className="text-muted text-sm">
@@ -194,13 +194,13 @@ export function JevonsPage() {
           <div className="h-[220px] mt-4">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={oilData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#333" />
-                <XAxis dataKey="year" stroke="#666" fontSize={11} />
-                <YAxis stroke="#666" fontSize={11} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#e8eaed" />
+                <XAxis dataKey="year" stroke="#9ca3af" fontSize={11} />
+                <YAxis stroke="#9ca3af" fontSize={11} />
                 <Tooltip
                   contentStyle={{
-                    background: "#1a1a1a",
-                    border: "1px solid #333",
+                    background: "#ffffff",
+                    border: "1px solid #e8eaed",
                     borderRadius: "8px",
                   }}
                 />
@@ -226,7 +226,7 @@ export function JevonsPage() {
         </Section>
 
         <Section
-          icon={<Monitor className="w-6 h-6 text-cyan-400" />}
+          icon={<Monitor className="w-6 h-6 text-cyan-600" />}
           title="Computing"
         >
           <p className="text-muted text-sm">
@@ -238,13 +238,13 @@ export function JevonsPage() {
           <div className="h-[220px] mt-4">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={computeData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#333" />
-                <XAxis dataKey="year" stroke="#666" fontSize={11} />
-                <YAxis stroke="#666" fontSize={11} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#e8eaed" />
+                <XAxis dataKey="year" stroke="#9ca3af" fontSize={11} />
+                <YAxis stroke="#9ca3af" fontSize={11} />
                 <Tooltip
                   contentStyle={{
-                    background: "#1a1a1a",
-                    border: "1px solid #333",
+                    background: "#ffffff",
+                    border: "1px solid #e8eaed",
                     borderRadius: "8px",
                   }}
                 />
@@ -264,46 +264,46 @@ export function JevonsPage() {
 
       {/* Software Engineers */}
       <Section
-        icon={<TrendingUp className="w-6 h-6 text-violet-400" />}
-        title="Software Engineers (This Is Happening Right Now)"
+        icon={<TrendingUp className="w-6 h-6 text-violet-600" />}
+        title="Coders (This Is Happening Right Now)"
       >
         <div className="grid md:grid-cols-2 gap-8">
           <div className="space-y-4">
             <p className="text-muted">
-              In 2024, AI started writing code. Everyone said: &ldquo;Software
-              engineers are done.&rdquo;
+              In 2024, AI got really good at writing code. Everyone said: &ldquo;People
+              who build software are going to lose their jobs.&rdquo;
             </p>
             <p>
-              <strong className="text-emerald-400">
+              <strong className="text-emerald-600">
                 The opposite happened.
               </strong>{" "}
-              More software engineers were hired in 2024-2025 than ever before.
+              More people were hired to build software in 2024-2025 than ever before.
               Why? Because building software got cheaper, so{" "}
-              <em>more companies built software</em>. Startups that couldn&apos;t
-              afford a dev team suddenly could. The market exploded.
+              <em>more companies started building software</em>. Small businesses that couldn&apos;t
+              afford a tech team suddenly could. The market exploded.
             </p>
             <div className="bg-violet-500/10 border border-violet-500/20 rounded-xl p-4 space-y-2">
-              <p className="font-medium text-violet-300">The key insight:</p>
+              <p className="font-medium text-violet-600">The key takeaway:</p>
               <p className="text-sm text-muted">
-                The engineers who got better at using AI became{" "}
+                The people who learned to use AI as a tool became{" "}
                 <strong className="text-foreground">10x more valuable</strong>,
-                not obsolete. They shipped more, faster, at higher quality.
-                Companies fought to hire them.
+                not obsolete. They got more done, faster, at higher quality.
+                Companies were fighting to hire them.
               </p>
             </div>
           </div>
           <div className="flex items-center justify-center">
             <div className="bg-gradient-to-br from-violet-500/20 to-accent/20 rounded-2xl p-8 text-center space-y-4">
-              <p className="text-5xl font-bold text-violet-300">+23%</p>
+              <p className="text-5xl font-bold text-violet-600">+23%</p>
               <p className="text-sm text-muted">
-                Growth in software engineering roles
+                More software jobs created
                 <br />
-                2024-2025, despite AI automation
+                in 2024-2025, even with AI doing more
               </p>
-              <div className="border-t border-white/10 pt-4">
-                <p className="text-3xl font-bold text-emerald-400">$4.2T</p>
+              <div className="border-t border-card-border pt-4">
+                <p className="text-3xl font-bold text-emerald-600">$4.2T</p>
                 <p className="text-sm text-muted">
-                  Global software market 2025
+                  Total global software industry in 2025
                   <br />
                   up from $2.1T in 2022
                 </p>
@@ -319,8 +319,8 @@ export function JevonsPage() {
         title="What This Means for Pearmill"
       >
         <p className="text-muted">
-          Drag the slider to see what happens to Pearmill&apos;s addressable market
-          as creative production costs drop.
+          Drag the slider to see what happens to Pearmill&apos;s potential customer base
+          as the cost of producing creative work drops.
         </p>
 
         <div className="space-y-6 mt-4">
@@ -346,7 +346,7 @@ export function JevonsPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-4">
-            <div className="bg-white/5 rounded-xl p-5 space-y-2">
+            <div className="bg-subtle-bg rounded-xl p-5 space-y-2">
               <p className="text-xs text-muted uppercase tracking-wider">
                 Before
               </p>
@@ -375,7 +375,7 @@ export function JevonsPage() {
               </p>
             </div>
             <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-5 flex flex-col items-center justify-center">
-              <p className="text-4xl font-bold text-emerald-400">
+              <p className="text-4xl font-bold text-emerald-600">
                 {pearmillData.growth > 0 ? "+" : ""}
                 {pearmillData.growth}%
               </p>
@@ -384,7 +384,7 @@ export function JevonsPage() {
           </div>
 
           <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-6 text-center">
-            <p className="text-lg font-medium text-emerald-300">
+            <p className="text-lg font-medium text-emerald-600">
               Cheaper doesn&apos;t mean less work. It means the pie gets so much
               bigger that everyone gets a bigger slice.
             </p>

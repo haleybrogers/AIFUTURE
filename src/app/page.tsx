@@ -1,5 +1,5 @@
-import { AssumptionsPage } from "@/components/assumptions-page";
+import { Homepage } from "@/components/homepage";
 
 export default function Home() {
-  return <AssumptionsPage />;
+  return <Homepage />;
 }

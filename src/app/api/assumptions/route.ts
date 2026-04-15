@@ -6,6 +6,7 @@ export async function GET() {
     include: {
       evidence: { orderBy: { createdAt: "desc" } },
       comments: { orderBy: { createdAt: "desc" } },
+      serviceLinks: { include: { serviceLine: true } },
     },
     orderBy: { createdAt: "asc" },
   });

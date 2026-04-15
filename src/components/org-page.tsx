@@ -30,46 +30,46 @@ const timeframes = [
   { key: "3yr", label: "3 Years" },
 ];
 
-const ratingLabels = ["", "Manual", "Mostly Manual", "Hybrid", "Mostly Auto", "Autonomous"];
+const ratingLabels = ["", "Humans only", "Mostly humans", "50/50 split", "Mostly AI", "AI handles it"];
 const ratingColors = [
   "",
-  "bg-red-500/30 text-red-300 border-red-500/30",
-  "bg-orange-500/30 text-orange-300 border-orange-500/30",
-  "bg-amber-500/30 text-amber-300 border-amber-500/30",
-  "bg-lime-500/30 text-lime-300 border-lime-500/30",
-  "bg-emerald-500/30 text-emerald-300 border-emerald-500/30",
+  "bg-red-100 text-red-700 border-red-200",
+  "bg-orange-100 text-orange-700 border-orange-200",
+  "bg-amber-100 text-amber-700 border-amber-200",
+  "bg-lime-100 text-lime-700 border-lime-200",
+  "bg-emerald-100 text-emerald-700 border-emerald-200",
 ];
 
 const roles = [
   {
     icon: User,
-    title: "IC",
-    subtitle: "Individual Contributor",
+    title: "The Builder",
+    subtitle: "Does the actual work",
     description:
-      "The builder. Actually doing the end work — running campaigns, creating assets, writing copy, building landing pages.",
+      "This person creates things — they run ad campaigns, make videos, write copy, build landing pages. They're hands-on, working directly with the tools and AI to produce results.",
     examples: "Lilia, Marco, Haight",
-    color: "border-cyan-500/30 bg-cyan-500/5",
-    iconColor: "text-cyan-400",
+    color: "border-cyan-200 bg-cyan-50",
+    iconColor: "text-cyan-600",
   },
   {
     icon: Target,
-    title: "DRI",
-    subtitle: "Directly Responsible Individual",
+    title: "The Owner",
+    subtitle: "Responsible for a result",
     description:
-      "Owns an outcome end-to-end. Not managing people — owning results. They have the autonomy and accountability to make it happen.",
+      "This person owns an outcome from start to finish. They're not managing people — they're making sure something specific gets done. If a client needs 50 new customers this month, the Owner is on the hook for making it happen.",
     examples: "Justin (Petal)",
-    color: "border-violet-500/30 bg-violet-500/5",
-    iconColor: "text-violet-400",
+    color: "border-violet-200 bg-violet-50",
+    iconColor: "text-violet-600",
   },
   {
     icon: Users,
-    title: "Player Coach",
-    subtitle: "DRI + IC Hybrid",
+    title: "The Player Coach",
+    subtitle: "Does work + helps others do theirs",
     description:
-      "Can be both a DRI and IC. Their job is to help other people do their jobs well. The evolved version of today's manager.",
+      "Part Builder, part Owner. This person still does hands-on work, but they also help other team members do their jobs better. Think of it like a sports captain who still plays in the game but also lifts up the rest of the team. This replaces the traditional manager role.",
     examples: "Current managers evolve into this",
-    color: "border-amber-500/30 bg-amber-500/5",
-    iconColor: "text-amber-400",
+    color: "border-amber-200 bg-amber-50",
+    iconColor: "text-amber-600",
   },
 ];
 
@@ -114,19 +114,19 @@ export function OrgPage() {
           The New Org
         </h1>
         <p className="text-muted mt-2">
-          From 6 layers and role-based titles to 2 layers and outcome
-          ownership. Here&apos;s the framework.
+          How companies are reorganizing for the AI era — fewer layers,
+          clearer ownership, and roles built around results instead of job titles.
         </p>
       </div>
 
       {/* Before / After */}
-      <div className="bg-card border border-card-border rounded-2xl p-8">
+      <div className="bg-card rounded-2xl shadow-sm border border-card-border p-8">
         <h2 className="text-xl font-semibold mb-6">
-          The Shift: Layers &rarr; Outcomes
+          How the structure changes
         </h2>
         <div className="grid md:grid-cols-2 gap-8">
           <div className="space-y-4">
-            <h3 className="text-sm font-medium text-red-400 uppercase tracking-wider">
+            <h3 className="text-sm font-medium text-red-500 uppercase tracking-wider">
               Old Model
             </h3>
             <div className="space-y-2">
@@ -148,27 +148,27 @@ export function OrgPage() {
               ))}
             </div>
             <p className="text-xs text-muted">
-              6 layers. Roles defined by title. Scale = more people at every level.
+              The traditional way: 6 layers of hierarchy. You grow by adding more people at each level.
             </p>
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-sm font-medium text-emerald-400 uppercase tracking-wider">
+            <h3 className="text-sm font-medium text-emerald-600 uppercase tracking-wider">
               New Model
             </h3>
             <div className="space-y-2">
               <div className="bg-emerald-500/5 border border-emerald-500/10 rounded-lg px-4 py-3 text-sm">
-                Layer 1: DRIs + Player Coaches (own outcomes)
+                Layer 1: Owners + Player Coaches (responsible for results)
               </div>
               <div
                 className="bg-emerald-500/5 border border-emerald-500/10 rounded-lg px-4 py-3 text-sm"
                 style={{ marginLeft: "16px" }}
               >
-                Layer 2: ICs + AI Agents (build & execute)
+                Layer 2: Builders + AI tools (do the actual work)
               </div>
             </div>
             <p className="text-xs text-muted">
-              2 layers. Roles defined by outcomes. Scale = better AI + more clients.
+              The new way: just 2 layers. You grow by getting better AI and taking on more clients — not by hiring more people.
             </p>
           </div>
         </div>
@@ -178,8 +178,8 @@ export function OrgPage() {
       <div>
         <h2 className="text-xl font-semibold mb-4">The Three Roles</h2>
         <p className="text-sm text-muted mb-6">
-          From Jack Dorsey / Block: every company will converge on these three
-          roles. People move between them fluidly.
+          Instead of a dozen different job titles, companies will settle on
+          three core roles. People can move between them depending on the project.
         </p>
         <div className="grid md:grid-cols-3 gap-4">
           {roles.map((role) => {
@@ -215,11 +215,10 @@ export function OrgPage() {
       </div>
 
       {/* Autonomy Heatmap */}
-      <div className="bg-card border border-card-border rounded-2xl p-8">
-        <h2 className="text-xl font-semibold mb-2">Autonomy Heatmap</h2>
+      <div className="bg-card rounded-2xl shadow-sm border border-card-border p-8">
+        <h2 className="text-xl font-semibold mb-2">How much can AI do on its own?</h2>
         <p className="text-sm text-muted mb-6">
-          Click cells to rate each competency&apos;s autonomy level. Where are we
-          now vs. where we&apos;re heading?
+          For each skill, rate how much AI can handle today vs. in 1 year vs. in 3 years. Click a cell to change it.
         </p>
 
         {loading ? (
@@ -234,7 +233,7 @@ export function OrgPage() {
               <thead>
                 <tr>
                   <th className="text-left text-sm font-medium text-muted pb-4 pr-4 w-48">
-                    Competency
+                    Skill
                   </th>
                   {timeframes.map((tf) => (
                     <th
@@ -286,9 +285,9 @@ export function OrgPage() {
                             className={cn(
                               "w-4 h-4",
                               delta > 2
-                                ? "text-emerald-400"
+                                ? "text-emerald-600"
                                 : delta > 0
-                                ? "text-amber-400"
+                                ? "text-amber-600"
                                 : "text-muted"
                             )}
                           />
@@ -296,9 +295,9 @@ export function OrgPage() {
                             className={cn(
                               "text-xs font-medium",
                               delta > 2
-                                ? "text-emerald-400"
+                                ? "text-emerald-600"
                                 : delta > 0
-                                ? "text-amber-400"
+                                ? "text-amber-600"
                                 : "text-muted"
                             )}
                           >

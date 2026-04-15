@@ -36,16 +36,16 @@ type ServiceLine = {
 };
 
 const statusColors: Record<string, string> = {
-  exploring: "bg-blue-500/20 text-blue-300",
-  piloting: "bg-amber-500/20 text-amber-300",
-  active: "bg-emerald-500/20 text-emerald-300",
-  paused: "bg-gray-500/20 text-gray-300",
+  exploring: "bg-blue-100 text-blue-700",
+  piloting: "bg-amber-100 text-amber-700",
+  active: "bg-emerald-100 text-emerald-700",
+  paused: "bg-gray-100 text-gray-600",
 };
 
 const opportunityColors: Record<string, string> = {
-  small: "text-gray-400",
-  medium: "text-amber-400",
-  large: "text-emerald-400",
+  small: "text-gray-500",
+  medium: "text-amber-600",
+  large: "text-emerald-600",
 };
 
 function ServiceCard({
@@ -119,7 +119,7 @@ function ServiceCard({
       {(service.currentPricing || service.proposedPricing) && (
         <div className="grid grid-cols-2 gap-4">
           {service.currentPricing && (
-            <div className="bg-white/5 rounded-lg p-3">
+            <div className="bg-input-bg rounded-lg p-3">
               <p className="text-xs text-muted mb-1">Current Pricing</p>
               <p className="text-sm">{service.currentPricing}</p>
             </div>
@@ -136,7 +136,7 @@ function ServiceCard({
       )}
 
       {service.aiDeliveryModel && (
-        <div className="bg-white/5 rounded-lg p-3">
+        <div className="bg-input-bg rounded-lg p-3">
           <p className="text-xs text-muted mb-1">AI Delivery Model</p>
           <p className="text-sm">{service.aiDeliveryModel}</p>
         </div>
@@ -149,7 +149,7 @@ function ServiceCard({
             {service.assumptionLinks.map((link) => (
               <span
                 key={link.id}
-                className="text-xs bg-white/5 border border-card-border rounded-full px-2.5 py-1"
+                className="text-xs bg-input-bg border border-card-border rounded-full px-2.5 py-1"
               >
                 {link.assumption.title}
               </span>
@@ -171,7 +171,7 @@ function ServiceCard({
               "text-xs px-2.5 py-1 rounded-full transition-colors",
               service.status === s
                 ? statusColors[s]
-                : "text-muted hover:text-foreground hover:bg-white/5"
+                : "text-muted hover:text-foreground hover:bg-hover-bg"
             )}
           >
             {s}
@@ -244,13 +244,13 @@ function NewServiceForm({
           placeholder="Service name"
           value={form.name}
           onChange={(e) => setForm({ ...form, name: e.target.value })}
-          className="bg-white/5 border border-card-border rounded-lg px-4 py-2.5 text-sm placeholder:text-muted"
+          className="bg-input-bg border border-card-border rounded-lg px-4 py-2.5 text-sm placeholder:text-muted"
           autoFocus
         />
         <select
           value={form.type}
           onChange={(e) => setForm({ ...form, type: e.target.value })}
-          className="bg-white/5 border border-card-border rounded-lg px-3 py-2.5 text-sm"
+          className="bg-input-bg border border-card-border rounded-lg px-3 py-2.5 text-sm"
         >
           <option value="new">New Service</option>
           <option value="restructured">Restructured Existing</option>
@@ -262,7 +262,7 @@ function NewServiceForm({
         value={form.description}
         onChange={(e) => setForm({ ...form, description: e.target.value })}
         rows={2}
-        className="w-full bg-white/5 border border-card-border rounded-lg px-4 py-2.5 text-sm placeholder:text-muted resize-none"
+        className="w-full bg-input-bg border border-card-border rounded-lg px-4 py-2.5 text-sm placeholder:text-muted resize-none"
       />
 
       <div className="grid md:grid-cols-2 gap-4">
@@ -271,7 +271,7 @@ function NewServiceForm({
           placeholder="Current pricing model"
           value={form.currentPricing}
           onChange={(e) => setForm({ ...form, currentPricing: e.target.value })}
-          className="bg-white/5 border border-card-border rounded-lg px-4 py-2.5 text-sm placeholder:text-muted"
+          className="bg-input-bg border border-card-border rounded-lg px-4 py-2.5 text-sm placeholder:text-muted"
         />
         <input
           type="text"
@@ -280,7 +280,7 @@ function NewServiceForm({
           onChange={(e) =>
             setForm({ ...form, proposedPricing: e.target.value })
           }
-          className="bg-white/5 border border-card-border rounded-lg px-4 py-2.5 text-sm placeholder:text-muted"
+          className="bg-input-bg border border-card-border rounded-lg px-4 py-2.5 text-sm placeholder:text-muted"
         />
       </div>
 
@@ -289,7 +289,7 @@ function NewServiceForm({
         placeholder="How does AI change the delivery?"
         value={form.aiDeliveryModel}
         onChange={(e) => setForm({ ...form, aiDeliveryModel: e.target.value })}
-        className="w-full bg-white/5 border border-card-border rounded-lg px-4 py-2.5 text-sm placeholder:text-muted"
+        className="w-full bg-input-bg border border-card-border rounded-lg px-4 py-2.5 text-sm placeholder:text-muted"
       />
 
       <div className="grid md:grid-cols-2 gap-4">
@@ -298,7 +298,7 @@ function NewServiceForm({
           onChange={(e) =>
             setForm({ ...form, marketOpportunity: e.target.value })
           }
-          className="bg-white/5 border border-card-border rounded-lg px-3 py-2.5 text-sm"
+          className="bg-input-bg border border-card-border rounded-lg px-3 py-2.5 text-sm"
         >
           <option value="small">Small Market</option>
           <option value="medium">Medium Market</option>
@@ -309,7 +309,7 @@ function NewServiceForm({
           value={form.notes}
           onChange={(e) => setForm({ ...form, notes: e.target.value })}
           rows={1}
-          className="bg-white/5 border border-card-border rounded-lg px-4 py-2.5 text-sm placeholder:text-muted resize-none"
+          className="bg-input-bg border border-card-border rounded-lg px-4 py-2.5 text-sm placeholder:text-muted resize-none"
         />
       </div>
 
@@ -339,7 +339,7 @@ function NewServiceForm({
 
       <button
         onClick={submit}
-        className="bg-accent hover:bg-accent-light px-6 py-2.5 rounded-lg text-sm font-medium transition-colors"
+        className="bg-accent hover:bg-accent-light text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-colors"
       >
         Add Service Line
       </button>
@@ -393,7 +393,7 @@ export function ServicesPage() {
         </div>
         <button
           onClick={() => setShowNew(true)}
-          className="bg-accent hover:bg-accent-light px-4 py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
+          className="bg-accent hover:bg-accent-light text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
         >
           <Plus className="w-4 h-4" />
           New Service
@@ -413,7 +413,7 @@ export function ServicesPage() {
               "px-3 py-1.5 rounded-lg text-sm transition-colors",
               filterType === f.value
                 ? "bg-accent/20 text-accent-light"
-                : "text-muted hover:text-foreground hover:bg-white/5"
+                : "text-muted hover:text-foreground hover:bg-hover-bg"
             )}
           >
             {f.label}

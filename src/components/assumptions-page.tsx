@@ -50,20 +50,20 @@ const categories = [
 ];
 
 const categoryColors: Record<string, string> = {
-  market: "bg-emerald-500/20 text-emerald-300",
-  technology: "bg-cyan-500/20 text-cyan-300",
-  org_structure: "bg-amber-500/20 text-amber-300",
-  pricing: "bg-violet-500/20 text-violet-300",
-  other: "bg-gray-500/20 text-gray-300",
+  market: "bg-emerald-100 text-emerald-700",
+  technology: "bg-cyan-100 text-cyan-700",
+  org_structure: "bg-amber-100 text-amber-700",
+  pricing: "bg-violet-100 text-violet-700",
+  other: "bg-gray-100 text-gray-600",
 };
 
 function ConvictionBadge({ score }: { score: number }) {
   const color =
     score >= 75
-      ? "text-emerald-400"
+      ? "text-emerald-600"
       : score >= 40
-      ? "text-amber-400"
-      : "text-red-400";
+      ? "text-amber-600"
+      : "text-red-500";
   return (
     <span className={cn("font-mono font-bold text-lg", color)}>{score}%</span>
   );
@@ -121,9 +121,9 @@ function AssumptionCard({
   );
 
   return (
-    <div className="bg-card border border-card-border rounded-xl overflow-hidden">
+    <div className="bg-card rounded-2xl shadow-sm border border-card-border overflow-hidden">
       <div
-        className="p-5 cursor-pointer hover:bg-white/[0.02] transition-colors"
+        className="p-5 cursor-pointer hover:bg-hover-bg transition-colors"
         onClick={() => setExpanded(!expanded)}
       >
         <div className="flex items-start justify-between gap-4">
@@ -183,7 +183,7 @@ function AssumptionCard({
           {/* Evidence */}
           <div className="grid md:grid-cols-2 gap-4">
             <div className="space-y-3">
-              <div className="flex items-center gap-2 text-sm font-medium text-emerald-400">
+              <div className="flex items-center gap-2 text-sm font-medium text-emerald-600">
                 <Shield className="w-4 h-4" />
                 Evidence For ({forEvidence.length})
               </div>
@@ -207,7 +207,7 @@ function AssumptionCard({
               ))}
             </div>
             <div className="space-y-3">
-              <div className="flex items-center gap-2 text-sm font-medium text-red-400">
+              <div className="flex items-center gap-2 text-sm font-medium text-red-600">
                 <ShieldAlert className="w-4 h-4" />
                 Evidence Against ({againstEvidence.length})
               </div>
@@ -239,7 +239,7 @@ function AssumptionCard({
               onChange={(e) =>
                 setEvidenceType(e.target.value as "for" | "against")
               }
-              className="bg-white/5 border border-card-border rounded-lg px-3 py-2 text-sm"
+              className="bg-input-bg border border-card-border rounded-lg px-3 py-2 text-sm"
             >
               <option value="for">For</option>
               <option value="against">Against</option>
@@ -250,11 +250,11 @@ function AssumptionCard({
               value={newEvidence}
               onChange={(e) => setNewEvidence(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && addEvidence()}
-              className="flex-1 bg-white/5 border border-card-border rounded-lg px-3 py-2 text-sm placeholder:text-muted"
+              className="flex-1 bg-input-bg border border-card-border rounded-lg px-3 py-2 text-sm placeholder:text-muted"
             />
             <button
               onClick={addEvidence}
-              className="bg-accent hover:bg-accent-light px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+              className="bg-accent hover:bg-accent-light text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
             >
               Add
             </button>
@@ -269,7 +269,7 @@ function AssumptionCard({
             {assumption.comments.map((c) => (
               <div
                 key={c.id}
-                className="bg-white/5 rounded-lg p-3 space-y-1"
+                className="bg-input-bg rounded-lg p-3 space-y-1"
               >
                 <div className="flex items-center gap-2">
                   <span className="text-sm font-medium">{c.author}</span>
@@ -286,7 +286,7 @@ function AssumptionCard({
                 placeholder="Your name"
                 value={commentAuthor}
                 onChange={(e) => setCommentAuthor(e.target.value)}
-                className="w-32 bg-white/5 border border-card-border rounded-lg px-3 py-2 text-sm placeholder:text-muted"
+                className="w-32 bg-input-bg border border-card-border rounded-lg px-3 py-2 text-sm placeholder:text-muted"
               />
               <input
                 type="text"
@@ -294,11 +294,11 @@ function AssumptionCard({
                 value={newComment}
                 onChange={(e) => setNewComment(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && addComment()}
-                className="flex-1 bg-white/5 border border-card-border rounded-lg px-3 py-2 text-sm placeholder:text-muted"
+                className="flex-1 bg-input-bg border border-card-border rounded-lg px-3 py-2 text-sm placeholder:text-muted"
               />
               <button
                 onClick={addComment}
-                className="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                className="bg-hover-bg hover:bg-card-border px-4 py-2 rounded-lg text-sm font-medium transition-colors"
               >
                 Post
               </button>
@@ -309,7 +309,7 @@ function AssumptionCard({
           <div className="flex justify-end">
             <button
               onClick={() => onDelete(assumption.id)}
-              className="text-xs text-red-400 hover:text-red-300 transition-colors"
+              className="text-xs text-red-500 hover:text-red-600 transition-colors"
             >
               Delete assumption
             </button>
@@ -355,7 +355,7 @@ function NewAssumptionForm({
         placeholder="What do you believe will be true?"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        className="w-full bg-white/5 border border-card-border rounded-lg px-4 py-3 text-base placeholder:text-muted"
+        className="w-full bg-input-bg border border-card-border rounded-lg px-4 py-3 text-base placeholder:text-muted"
         autoFocus
       />
       <textarea
@@ -363,13 +363,13 @@ function NewAssumptionForm({
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         rows={3}
-        className="w-full bg-white/5 border border-card-border rounded-lg px-4 py-3 text-sm placeholder:text-muted resize-none"
+        className="w-full bg-input-bg border border-card-border rounded-lg px-4 py-3 text-sm placeholder:text-muted resize-none"
       />
       <div className="flex items-center gap-3">
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="bg-white/5 border border-card-border rounded-lg px-3 py-2 text-sm"
+          className="bg-input-bg border border-card-border rounded-lg px-3 py-2 text-sm"
         >
           {categories.slice(1).map((c) => (
             <option key={c.value} value={c.value}>
@@ -379,7 +379,7 @@ function NewAssumptionForm({
         </select>
         <button
           onClick={submit}
-          className="bg-accent hover:bg-accent-light px-6 py-2 rounded-lg text-sm font-medium transition-colors ml-auto"
+          className="bg-accent hover:bg-accent-light text-white px-6 py-2 rounded-lg text-sm font-medium transition-colors ml-auto"
         >
           Add Assumption
         </button>
@@ -440,7 +440,7 @@ export function AssumptionsPage() {
         </div>
         <button
           onClick={() => setShowNew(true)}
-          className="bg-accent hover:bg-accent-light px-4 py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
+          className="bg-accent hover:bg-accent-light text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
         >
           <Plus className="w-4 h-4" />
           New Assumption
@@ -449,11 +449,11 @@ export function AssumptionsPage() {
 
       {/* Stats Bar */}
       <div className="flex gap-4">
-        <div className="bg-card border border-card-border rounded-lg px-4 py-3 flex items-center gap-3">
+        <div className="bg-card rounded-xl shadow-sm border border-card-border px-4 py-3 flex items-center gap-3">
           <span className="text-sm text-muted">Total</span>
           <span className="font-bold text-lg">{assumptions.length}</span>
         </div>
-        <div className="bg-card border border-card-border rounded-lg px-4 py-3 flex items-center gap-3">
+        <div className="bg-card rounded-xl shadow-sm border border-card-border px-4 py-3 flex items-center gap-3">
           <span className="text-sm text-muted">Avg Conviction</span>
           <ConvictionBadge score={avgConviction} />
         </div>
@@ -469,7 +469,7 @@ export function AssumptionsPage() {
               "px-3 py-1.5 rounded-lg text-sm transition-colors",
               filter === c.value
                 ? "bg-accent/20 text-accent-light"
-                : "text-muted hover:text-foreground hover:bg-white/5"
+                : "text-muted hover:text-foreground hover:bg-hover-bg"
             )}
           >
             {c.label}

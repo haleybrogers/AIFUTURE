@@ -1,5 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const { PrismaClient } = require("../src/generated/prisma/client");
+import "dotenv/config";
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -18,90 +18,90 @@ async function main() {
   const assumptions = await Promise.all([
     prisma.assumption.create({
       data: {
-        title: "Production costs are approaching zero",
+        title: "Making things is about to get incredibly cheap",
         description:
-          "AI is making it dramatically cheaper to produce creative assets, software, content, and other deliverables. What used to take a team weeks can now be done in hours. This collapses the cost structure of agencies and shifts value elsewhere.",
+          "AI is making it way cheaper to create ads, videos, websites, and software. Work that used to take a whole team several weeks can now be done in a few hours. This means the cost of actually making stuff is dropping fast — which changes everything about how agencies like Pearmill charge for their work and where the real value is.",
         category: "technology",
         convictionScore: 85,
       },
     }),
     prisma.assumption.create({
       data: {
-        title: "Distribution is the scarce resource",
+        title: "Getting attention becomes the hardest part",
         description:
-          "When building anything is easy, the hardest part becomes getting it in front of people. There are a limited number of humans willing to buy things and limited capital in the system. Marketing and sales become the real differentiator, not production capability.",
+          "When anyone can build anything easily, the real challenge is getting people to notice it. There are only so many potential customers out there and only so much money to go around. The companies that win won't be the ones who make the best stuff — they'll be the ones who get it in front of the right people. Marketing and sales become more important than production.",
         category: "market",
         convictionScore: 80,
       },
     }),
     prisma.assumption.create({
       data: {
-        title: "Companies will restructure around AI, not just augment with it",
+        title: "Companies need to reorganize, not just add AI tools",
         description:
-          "Using AI to do the same thing cheaper misses the point. The org itself needs to change — new roles, fewer layers, different hiring profiles. We used to hire copywriters; that's directionally going away. The question is whether we need distinct paid search managers, motion designers, etc. or if those roles merge.",
+          "Just giving your existing team AI tools and calling it a day won't cut it. The company itself needs to change — different kinds of jobs, fewer management layers, different skills when hiring. For example, companies used to hire people whose only job was writing ad copy. That specific role is shrinking. The question now is whether you still need separate specialists for each task, or whether one person with AI can do several jobs at once.",
         category: "org_structure",
         convictionScore: 75,
       },
     }),
     prisma.assumption.create({
       data: {
-        title: "The line between software and services is disappearing",
+        title: "Everyone is becoming a software builder",
         description:
-          "Everyone will build software the way everyone builds spreadsheets. Haley is already a software engineer. Software is becoming as ubiquitous as Excel. The distinction between 'we build software' and 'we provide services' is collapsing.",
+          "Building software used to require years of specialized training. Now, people are building apps and tools the same way they'd make a spreadsheet — it's becoming that normal. People at Pearmill who were hired as marketers are now building software products. The old categories of 'tech company' vs. 'services company' are blurring together.",
         category: "technology",
         convictionScore: 90,
       },
     }),
     prisma.assumption.create({
       data: {
-        title: "Agent-to-agent commerce will become a major economy",
+        title: "AI assistants will start buying things on our behalf",
         description:
-          "Agents with economic access (credit cards, bank accounts) will make purchasing decisions autonomously. Your personal agent buys shoes for your wedding. Agent-to-agent transactions will create a massive new economy with 40%+ growth rates because it's just starting.",
+          "Imagine your personal AI assistant has access to your credit card. You tell it 'find me shoes for this wedding' and it goes and purchases them for you. Now imagine millions of AI assistants all doing this — buying, selling, and negotiating with each other. This creates an entirely new economy where AI programs are the customers, not just people. It's brand new, so the growth potential is massive.",
         category: "market",
         convictionScore: 55,
       },
     }),
     prisma.assumption.create({
       data: {
-        title: "Outcome-based pricing replaces time-based billing",
+        title: "Clients will pay for results, not hours worked",
         description:
-          "Instead of charging per asset or per hour (effectively charging for time), agencies move toward guaranteeing outcomes. McKinsey already does this — they guarantee loan volumes and take on capital risk. The premium for outcome-based is much higher than time-based.",
+          "Right now, most agencies charge by the hour or by the number of things they make (ads, designs, etc.). But what if instead, an agency said 'we guarantee you'll get 100 new customers this month, and you only pay us based on that'? That's outcome-based pricing — charging for results instead of time. Some consulting firms already do this. The shift means agencies take on more risk, but they can also charge a lot more.",
         category: "pricing",
         convictionScore: 65,
       },
     }),
     prisma.assumption.create({
       data: {
-        title: "Quality becomes measurable via evaluators and benchmarks",
+        title: "We'll be able to score creative work like a test grade",
         description:
-          "Industry-standard evaluators will score creative work the way software benchmarks score code. AI gives people scorecards on the work they produce. This replaces vibes-based quality assessment with clear metrics, creating a real differentiation point.",
+          "Right now, judging whether an ad or design is 'good' is mostly based on gut feelings and opinions. But AI is making it possible to actually score creative work — like getting a grade on a paper. Standardized scoring tools will tell you 'this ad is an 85 out of 100' based on real data. This replaces arguing about taste with clear measurements, and it lets the best work stand out.",
         category: "technology",
         convictionScore: 70,
       },
     }),
     prisma.assumption.create({
       data: {
-        title: 'Every company becomes a "mini AGI"',
+        title: "A company's AI knowledge becomes its most valuable asset",
         description:
-          "A company\'s value shifts from its people to its accumulated AI knowledge. All historical learnings, processes, and taste get embedded in AI systems. People come and go, but the institutional intelligence compounds. For agencies (already process companies), this is especially powerful.",
+          "Think about what makes a company valuable. Today, it's mostly the people who work there. But what if all the lessons a company has learned, all its best processes, and all the judgment calls its best employees have made got stored inside its AI systems? Then even when people leave, that knowledge stays and keeps getting smarter. The company itself becomes intelligent — like a brain that never forgets and keeps learning.",
         category: "org_structure",
         convictionScore: 60,
       },
     }),
     prisma.assumption.create({
       data: {
-        title: "Jevons' Paradox applies: cheaper production = massively larger market",
+        title: "Cheaper production means a way bigger market, not less work",
         description:
-          "When something gets cheaper, total usage explodes — not contracts. Oil, computing, and now software engineering all followed this pattern. Cheaper creative production means companies that couldn't afford Pearmill suddenly can. The addressable market grows exponentially.",
+          "History shows us something surprising: when something gets cheaper, people don't use less of it — they use way, way more of it. When computers got cheaper, the computer industry didn't shrink — it exploded and became the biggest industry in history. The same thing is happening with creative work. As AI makes it cheaper to produce ads and content, the number of companies that can afford professional marketing will skyrocket. That means more potential clients, not fewer.",
         category: "market",
         convictionScore: 85,
       },
     }),
     prisma.assumption.create({
       data: {
-        title: "Compute costs spike short-term (2026-2028) then fall",
+        title: "AI running costs go up in 2026-2028, then drop",
         description:
-          "We're GPU-bottlenecked due to ASML's production constraints. Cost per token is rising for the first time in months. By 2028 supply catches up and costs fall again. Short-term mitigation: local compute strategy (buy GPUs now at cheaper prices).",
+          "Running AI requires special computer chips called GPUs. Right now, there's a shortage because only one company in the world (ASML, based in the Netherlands) makes the machines that manufacture these chips. So the cost of using AI is actually going up in the short term. But by around 2028, manufacturing will catch up with demand and prices will fall again. In the meantime, it may make sense to buy your own chips now while they're still relatively affordable.",
         category: "technology",
         convictionScore: 70,
       },
@@ -114,61 +114,61 @@ async function main() {
       {
         assumptionId: assumptions[0].id,
         content:
-          "Nima hasn't written a single line of code since December 2025. Built entire products using AI agents.",
+          "Pearmill's founder Nima hasn't personally written a single line of code since December 2025. He's built entire products just by directing AI tools.",
         type: "for",
       },
       {
         assumptionId: assumptions[0].id,
         content:
-          "HopKit was built in 1-1.5 months. In a year, same thing might take 2 days.",
+          "A product called HopKit took about 6 weeks to build. At the current pace of AI improvement, the same product might take just 2 days within a year.",
         type: "for",
       },
       {
         assumptionId: assumptions[3].id,
         content:
-          "Haley, Dino, and Justin are all effectively software engineers now despite not being hired as such.",
+          "Three Pearmill team members (Haley, Dino, and Justin) are now building software products even though none of them were originally hired as software engineers.",
         type: "for",
       },
       {
         assumptionId: assumptions[8].id,
         content:
-          "Software engineering roles grew 23% in 2024-2025 despite AI automation of coding tasks.",
+          "Even though AI can now write code, software engineering jobs actually grew 23% between 2024 and 2025. Cheaper didn't mean fewer jobs — it meant more demand.",
         type: "for",
       },
       {
         assumptionId: assumptions[8].id,
         content:
-          "How many companies has Pearmill rejected because they couldn't afford us? At lower costs, they all become clients.",
+          "Think about how many companies Pearmill has turned away because they couldn't afford the fees. If costs drop, all of those companies suddenly become potential clients.",
         type: "for",
       },
       {
         assumptionId: assumptions[5].id,
         content:
-          "Chad/Petal already operates close to this model — specific vertical, known cost-per-lead benchmarks across geographies.",
+          "One Pearmill client (Petal) already works close to this model. They focus on one specific industry and know exactly what it costs to get a new customer in each region, so pricing based on results is possible.",
         type: "for",
       },
       {
         assumptionId: assumptions[5].id,
         content:
-          "Healthcare is pay-to-play — harder to do pure outcome pricing there. May not work for all verticals.",
+          "Some industries like healthcare have strict rules about advertising. It's harder to guarantee specific results there, so this pricing model may not work for every type of client.",
         type: "against",
       },
       {
         assumptionId: assumptions[9].id,
         content:
-          "ASML in Netherlands is bottleneck for GPU manufacturing. Can only produce so many lithography machines.",
+          "There's only one company in the world (ASML in the Netherlands) that makes the specialized machines needed to manufacture AI chips. They can only produce so many, which creates a bottleneck.",
         type: "for",
       },
       {
         assumptionId: assumptions[2].id,
         content:
-          "Octane: built a tool that replaces 16 people's jobs. The people on the call who'd be made obsolete pushed back. Adoption resistance is real.",
+          "A company called Octane built an AI tool that could replace 16 people's jobs. When the affected employees found out, they pushed back hard. People resist changes that threaten their roles — this makes reorganizing harder than it sounds.",
         type: "against",
       },
       {
         assumptionId: assumptions[7].id,
         content:
-          "Flux uses Devin AI — terrible at first, but after months of learning the codebase, it outperforms Claude Code and Codex. Memory compounds.",
+          "A company called Flux uses an AI coding tool called Devin. It was terrible at first, but after months of learning the company's specific code, it now outperforms other AI tools. The longer AI works with your data, the smarter it gets.",
         type: "for",
       },
     ],
@@ -178,57 +178,57 @@ async function main() {
   const competencies = await Promise.all([
     prisma.competency.create({
       data: {
-        name: "Creative Production (video, static, UGC)",
+        name: "Making ads and videos",
         description:
-          "End-to-end creative asset production including video, static ads, and UGC content",
+          "Creating the actual content — videos, images, and creator-style ads that run on social media",
         order: 1,
       },
     }),
     prisma.competency.create({
       data: {
-        name: "Media Buying (paid social, paid search)",
+        name: "Running ad campaigns",
         description:
-          "Campaign setup, optimization, bidding, and budget management across platforms",
+          "Setting up and managing paid advertising on platforms like Meta, Google, and TikTok — deciding how much to spend, who to target, and when to run ads",
         order: 2,
       },
     }),
     prisma.competency.create({
       data: {
-        name: "Analytics & Testing",
+        name: "Analyzing results and testing",
         description:
-          "Performance analysis, A/B testing, creative testing methodology, reporting",
+          "Looking at the numbers to figure out what's working, running experiments to compare different approaches, and reporting results",
         order: 3,
       },
     }),
     prisma.competency.create({
       data: {
-        name: "Account Management",
+        name: "Managing client relationships",
         description:
-          "Client communication, strategy presentations, relationship management",
+          "Talking with clients, presenting ideas and results, keeping them happy and informed",
         order: 4,
       },
     }),
     prisma.competency.create({
       data: {
-        name: "CRO / Web Design",
+        name: "Designing websites and landing pages",
         description:
-          "Landing page optimization, conversion rate optimization, web design and development",
+          "Building and improving the pages people land on after clicking an ad — making sure they actually sign up, buy, or take action",
         order: 5,
       },
     }),
     prisma.competency.create({
       data: {
-        name: "Copywriting & Content",
+        name: "Writing ads and content",
         description:
-          "Ad copy, landing page copy, email copy, content strategy",
+          "Writing the words that appear in ads, on websites, and in emails — the text that convinces people to take action",
         order: 6,
       },
     }),
     prisma.competency.create({
       data: {
-        name: "Strategy",
+        name: "Big-picture planning",
         description:
-          "High-level marketing strategy, channel strategy, growth planning",
+          "Deciding the overall marketing approach — which platforms to use, how to grow, what the long-term plan looks like",
         order: 7,
       },
     }),
@@ -241,27 +241,27 @@ async function main() {
     let oneYrRating = 2;
     let threeYrRating = 3;
 
-    if (comp.name.includes("Copywriting")) {
+    if (comp.name.includes("Writing ads")) {
       nowRating = 3;
       oneYrRating = 4;
       threeYrRating = 5;
-    } else if (comp.name.includes("Creative Production")) {
+    } else if (comp.name.includes("Making ads")) {
       nowRating = 2;
       oneYrRating = 3;
       threeYrRating = 4;
-    } else if (comp.name.includes("Analytics")) {
+    } else if (comp.name.includes("Analyzing")) {
       nowRating = 2;
       oneYrRating = 3;
       threeYrRating = 4;
-    } else if (comp.name.includes("Media Buying")) {
+    } else if (comp.name.includes("Running ad")) {
       nowRating = 2;
       oneYrRating = 3;
       threeYrRating = 4;
-    } else if (comp.name.includes("Account Management")) {
+    } else if (comp.name.includes("Managing client")) {
       nowRating = 1;
       oneYrRating = 2;
       threeYrRating = 3;
-    } else if (comp.name.includes("Strategy")) {
+    } else if (comp.name.includes("Big-picture")) {
       nowRating = 1;
       oneYrRating = 2;
       threeYrRating = 3;
