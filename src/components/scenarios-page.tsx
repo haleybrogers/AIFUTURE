@@ -175,6 +175,56 @@ const staticAssumptions: Assumption[] = [
     ],
     serviceLinks: [],
   },
+  {
+    id: "14", title: "The 'ghost workforce' is the new normal — fewer people doing more jobs",
+    description: "Companies aren't openly replacing marketers with AI. Instead, when someone quits or gets laid off, they just don't hire a replacement and point at AI tools. The result: 76% of marketers say they're now doing the work of 2-3 people. Headcount is shrinking but workloads are growing. This creates a massive opportunity for agencies who can be the external team that fills those gaps — especially if one person with AI at Pearmill can do what 3 in-house hires used to do.",
+    category: "market", convictionScore: 90,
+    evidence: [
+      { id: "e17", content: "76% of marketers say they're doing the work of more than one job. Only 11% of companies say they've 'replaced workers with AI' — but they're not backfilling roles when people leave. (Content Marketing Institute, 2026)", type: "for", sourceUrl: null },
+      { id: "e18", content: "26% of US marketers report 'AI brain fry' — mental fog, slower decisions, fatigue — the highest of any function. The ghost workforce is burning out. (eMarketer 2026)", type: "for", sourceUrl: null },
+    ],
+    serviceLinks: [],
+  },
+  {
+    id: "15", title: "AI video is about to transform ad creative",
+    description: "AI-generated video went from a novelty to a real production tool in 2026. Tools like Runway Gen-4.5 produce footage with cinematic quality. Brands using AI video ads are seeing 27% higher conversion rates than static images. OpenAI's Sora shut down because it was too expensive ($15M/day in compute), but competitors like Runway, Kling, and Veo filled the gap instantly. The best agencies aren't picking one tool — they're using different tools for different purposes.",
+    category: "technology", convictionScore: 80,
+    evidence: [
+      { id: "e19", content: "Brands running AI-generated video ads report 27% higher conversion rates than static image campaigns. (Wyzowl 2026 State of Video Marketing)", type: "for", sourceUrl: null },
+      { id: "e20", content: "OpenAI shut down Sora because each 10-second clip cost $1.30 to produce — they were losing $15M/day. But Runway, Kling, and Veo all stepped in immediately. The tech works; the economics are catching up. (Bloomberg, March 2026)", type: "for", sourceUrl: null },
+    ],
+    serviceLinks: [],
+  },
+  {
+    id: "16", title: "Open-source AI lets you own your intelligence instead of renting it",
+    description: "Open-source AI models (like Meta's Llama 4 and Mistral) are now as good as the paid ones from OpenAI and Anthropic for many tasks. This means companies can run AI on their own computers instead of sending data to someone else's cloud. Why does this matter? Because your data stays private, your costs are predictable, and you're not dependent on any single AI company. Think of it like the difference between renting an apartment and owning a house — ownership gives you control.",
+    category: "technology", convictionScore: 75,
+    evidence: [
+      { id: "e21", content: "Open-source models like Llama 4 and Mistral now match GPT-4 level performance on many tasks. The gap between free and paid AI has effectively closed. (Multiple benchmarks, 2026)", type: "for", sourceUrl: null },
+      { id: "e22", content: "The EU's AI Act requires data localization in healthcare, finance, and government. Companies in regulated industries are moving to self-hosted AI because they legally can't send data to external servers.", type: "for", sourceUrl: null },
+    ],
+    serviceLinks: [],
+  },
+  {
+    id: "17", title: "The real AI risk isn't losing your job — it's becoming average",
+    description: "Here's what the data actually shows: marketing manager jobs are up 14% year-over-year even as AI adoption hit 91%. AI isn't eliminating roles — it's eliminating the excuse to be mediocre. The marketers who adapt are getting paid more. The ones who don't are being quietly replaced by peers who use AI effectively. It's not human vs. AI. It's human-with-AI vs. human-without-AI.",
+    category: "org_structure", convictionScore: 85,
+    evidence: [
+      { id: "e23", content: "Marketing manager jobs posted in 2026 are up 14% year-over-year — at the same time AI adoption in marketing hit 91%. The jobs aren't disappearing; they're evolving. (Multiple sources)", type: "for", sourceUrl: null },
+      { id: "e24", content: "A marketing manager in 2024 spent 40% of their time on reports, data pulls, and content drafts. In 2026, AI handles most of that. The role didn't disappear — it became more strategic. (AI Log 2026)", type: "for", sourceUrl: null },
+    ],
+    serviceLinks: [],
+  },
+  {
+    id: "18", title: "Half of all AI agent projects will fail — but the ones that work will be massive",
+    description: "Gartner predicts that 40%+ of agentic AI projects will be canceled by end of 2027 due to costs, unclear value, and weak governance. This sounds scary, but it's actually the pattern for every new technology — most early attempts fail, and then the winners capture enormous value. The agencies and companies that figure out AI agents that actually work will have a huge competitive moat because everyone else gave up.",
+    category: "technology", convictionScore: 70,
+    evidence: [
+      { id: "e25", content: "Gartner expects 40%+ agentic AI projects to be canceled by end of 2027 due to costs, unclear value, and weak governance. But the AI agents market is still expected to grow from $12-15B in 2025 to $80-100B by 2030.", type: "for", sourceUrl: null },
+      { id: "e26", content: "By 2027, half of companies using generative AI are expected to launch agentic AI applications capable of complex work with limited oversight. The winners will be the ones who survive the early failures. (PwC 2026)", type: "for", sourceUrl: null },
+    ],
+    serviceLinks: [],
+  },
 ];
 
 /* ─── Revenue Opportunities linked to assumptions ─── */
@@ -343,6 +393,56 @@ const assumptionOpportunities: Record<string, RevenueOpp[]> = {
       pricing: "$10,000 – $30,000/mo",
       phase: "Now",
       detail: "AI gets everyone to mid. Premium clients will pay for the human judgment that pushes creative from average to exceptional. This is the pitch.",
+    },
+  ],
+  "ghost workforce": [
+    {
+      icon: Bot,
+      title: "Fractional Marketing Team",
+      oneLiner: "Be the 2-3 extra people that burned-out in-house teams desperately need",
+      pricing: "$5,000 – $15,000/mo",
+      phase: "Now",
+      detail: "76% of marketers are doing the work of multiple people. They need help but their company won't hire. One Pearmill person with AI can fill the gap of 2-3 in-house roles.",
+    },
+  ],
+  "AI video is about to transform": [
+    {
+      icon: Paintbrush,
+      title: "AI Video Ad Production",
+      oneLiner: "Produce high-converting video ads at a fraction of traditional costs",
+      pricing: "$3,000 – $20,000/mo",
+      phase: "Now",
+      detail: "AI video ads convert 27% better than static. Best agencies use Runway for hero content, Kling for volume, Pika for social. Multi-tool workflow = competitive edge.",
+    },
+  ],
+  "Open-source AI lets you own": [
+    {
+      icon: Zap,
+      title: "Private AI Setup for Clients",
+      oneLiner: "Help clients run AI on their own infrastructure — data never leaves their building",
+      pricing: "$10,000 – $50,000 setup + $2,000 – $5,000/mo",
+      phase: "1 Year",
+      detail: "Regulated industries (healthcare, finance) legally can't send data to external AI. Self-hosted open-source models solve this. Huge market opening.",
+    },
+  ],
+  "real AI risk isn't losing your job": [
+    {
+      icon: TrendingUp,
+      title: "AI Upskilling & Workflow Design",
+      oneLiner: "Train client teams to use AI effectively — not just adopt it",
+      pricing: "$5,000 – $15,000/engagement",
+      phase: "6 Months",
+      detail: "80% of engineering workforce needs upskilling by 2027 (WEF). The companies that train their people win. Pearmill can package our AI workflows as training programs.",
+    },
+  ],
+  "Half of all AI agent projects will fail": [
+    {
+      icon: Bot,
+      title: "AI Agent Consulting — Learn from the Failures",
+      oneLiner: "Help clients avoid the 40% failure rate by starting with what actually works",
+      pricing: "$10,000 – $30,000/project",
+      phase: "6 Months",
+      detail: "Most companies will waste money on AI agents that don't work. Pearmill's advantage: we've already experimented and know what works for marketing. Sell that knowledge.",
     },
   ],
 };
