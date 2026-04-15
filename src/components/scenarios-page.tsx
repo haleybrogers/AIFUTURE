@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState } from "react";
 import {
   GitBranch,
   Calculator,
@@ -54,6 +54,98 @@ type Assumption = {
 };
 
 type AssumptionState = "true" | "false" | "uncertain";
+
+/* ─── Static Assumptions Data ─── */
+
+const staticAssumptions: Assumption[] = [
+  {
+    id: "1", title: "Making things is about to get incredibly cheap",
+    description: "AI is making it way cheaper to create ads, videos, websites, and software. Work that used to take a whole team several weeks can now be done in a few hours. This means the cost of actually making stuff is dropping fast — which changes everything about how agencies like Pearmill charge for their work and where the real value is.",
+    category: "technology", convictionScore: 85,
+    evidence: [
+      { id: "e1", content: "Pearmill's founder Nima hasn't personally written a single line of code since December 2025. He's built entire products just by directing AI tools.", type: "for", sourceUrl: null },
+      { id: "e2", content: "A product called HopKit took about 6 weeks to build. At the current pace of AI improvement, the same product might take just 2 days within a year.", type: "for", sourceUrl: null },
+    ],
+    serviceLinks: [],
+  },
+  {
+    id: "2", title: "Getting attention becomes the hardest part",
+    description: "When anyone can build anything easily, the real challenge is getting people to notice it. There are only so many potential customers out there and only so much money to go around. The companies that win won't be the ones who make the best stuff — they'll be the ones who get it in front of the right people.",
+    category: "market", convictionScore: 80,
+    evidence: [],
+    serviceLinks: [],
+  },
+  {
+    id: "3", title: "Companies need to reorganize, not just add AI tools",
+    description: "Just giving your existing team AI tools and calling it a day won't cut it. The company itself needs to change — different kinds of jobs, fewer management layers, different skills when hiring. The question now is whether you still need separate specialists for each task, or whether one person with AI can do several jobs at once.",
+    category: "org_structure", convictionScore: 75,
+    evidence: [
+      { id: "e3", content: "A company called Octane built an AI tool that could replace 16 people's jobs. When the affected employees found out, they pushed back hard. People resist changes that threaten their roles — this makes reorganizing harder than it sounds.", type: "against", sourceUrl: null },
+    ],
+    serviceLinks: [],
+  },
+  {
+    id: "4", title: "Everyone is becoming a software builder",
+    description: "Building software used to require years of specialized training. Now, people are building apps and tools the same way they'd make a spreadsheet — it's becoming that normal. People at Pearmill who were hired as marketers are now building software products.",
+    category: "technology", convictionScore: 90,
+    evidence: [
+      { id: "e4", content: "Three Pearmill team members (Haley, Dino, and Justin) are now building software products even though none of them were originally hired as software engineers.", type: "for", sourceUrl: null },
+    ],
+    serviceLinks: [],
+  },
+  {
+    id: "5", title: "AI assistants will start buying things on our behalf",
+    description: "Imagine your personal AI assistant has access to your credit card. You tell it 'find me shoes for this wedding' and it goes and purchases them for you. Now imagine millions of AI assistants all doing this — buying, selling, and negotiating with each other. This creates an entirely new economy where AI programs are the customers, not just people.",
+    category: "market", convictionScore: 55,
+    evidence: [],
+    serviceLinks: [],
+  },
+  {
+    id: "6", title: "Clients will pay for results, not hours worked",
+    description: "Right now, most agencies charge by the hour or by the number of things they make. But what if instead, an agency said 'we guarantee you'll get 100 new customers this month, and you only pay us based on that'? That's outcome-based pricing — charging for results instead of time.",
+    category: "pricing", convictionScore: 65,
+    evidence: [
+      { id: "e5", content: "One Pearmill client (Petal) already works close to this model. They focus on one specific industry and know exactly what it costs to get a new customer in each region, so pricing based on results is possible.", type: "for", sourceUrl: null },
+      { id: "e6", content: "Some industries like healthcare have strict rules about advertising. It's harder to guarantee specific results there, so this pricing model may not work for every type of client.", type: "against", sourceUrl: null },
+    ],
+    serviceLinks: [],
+  },
+  {
+    id: "7", title: "We'll be able to score creative work like a test grade",
+    description: "Right now, judging whether an ad or design is 'good' is mostly based on gut feelings and opinions. But AI is making it possible to actually score creative work — like getting a grade on a paper. Standardized scoring tools will tell you 'this ad is an 85 out of 100' based on real data.",
+    category: "technology", convictionScore: 70,
+    evidence: [],
+    serviceLinks: [],
+  },
+  {
+    id: "8", title: "A company's AI knowledge becomes its most valuable asset",
+    description: "Think about what makes a company valuable. Today, it's mostly the people who work there. But what if all the lessons a company has learned got stored inside its AI systems? Then even when people leave, that knowledge stays and keeps getting smarter. The company itself becomes intelligent.",
+    category: "org_structure", convictionScore: 60,
+    evidence: [
+      { id: "e7", content: "A company called Flux uses an AI coding tool called Devin. It was terrible at first, but after months of learning the company's specific code, it now outperforms other AI tools. The longer AI works with your data, the smarter it gets.", type: "for", sourceUrl: null },
+    ],
+    serviceLinks: [],
+  },
+  {
+    id: "9", title: "Cheaper production means a way bigger market, not less work",
+    description: "History shows us something surprising: when something gets cheaper, people don't use less of it — they use way, way more of it. When computers got cheaper, the computer industry didn't shrink — it exploded. The same thing is happening with creative work. As AI makes it cheaper, the number of companies that can afford professional marketing will skyrocket.",
+    category: "market", convictionScore: 85,
+    evidence: [
+      { id: "e8", content: "Even though AI can now write code, software engineering jobs actually grew 23% between 2024 and 2025. Cheaper didn't mean fewer jobs — it meant more demand.", type: "for", sourceUrl: null },
+      { id: "e9", content: "Think about how many companies Pearmill has turned away because they couldn't afford the fees. If costs drop, all of those companies suddenly become potential clients.", type: "for", sourceUrl: null },
+    ],
+    serviceLinks: [],
+  },
+  {
+    id: "10", title: "AI running costs go up in 2026-2028, then drop",
+    description: "Running AI requires special computer chips called GPUs. Right now, there's a shortage because only one company in the world (ASML, based in the Netherlands) makes the machines that manufacture these chips. So the cost of using AI is actually going up in the short term. But by around 2028, manufacturing will catch up and prices will fall again.",
+    category: "technology", convictionScore: 70,
+    evidence: [
+      { id: "e10", content: "There's only one company in the world (ASML in the Netherlands) that makes the specialized machines needed to manufacture AI chips. They can only produce so many, which creates a bottleneck.", type: "for", sourceUrl: null },
+    ],
+    serviceLinks: [],
+  },
+];
 
 /* ─── Revenue Opportunities linked to assumptions ─── */
 
@@ -314,24 +406,16 @@ const categoryColors: Record<string, string> = {
 };
 
 export function ScenariosPage() {
-  const [assumptions, setAssumptions] = useState<Assumption[]>([]);
-  const [states, setStates] = useState<Record<string, AssumptionState>>({});
-  const [expandedId, setExpandedId] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  const fetchData = useCallback(async () => {
-    const res = await fetch("/api/assumptions");
-    const data = await res.json();
-    setAssumptions(data);
+  const assumptions = staticAssumptions;
+  const [states, setStates] = useState<Record<string, AssumptionState>>(() => {
     const initial: Record<string, AssumptionState> = {};
-    data.forEach((a: Assumption) => {
+    staticAssumptions.forEach((a) => {
       initial[a.id] = a.convictionScore >= 70 ? "true" : a.convictionScore <= 30 ? "false" : "uncertain";
     });
-    setStates(initial);
-    setLoading(false);
-  }, []);
-
-  useEffect(() => { fetchData(); }, [fetchData]);
+    return initial;
+  });
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const loading = false;
 
   const toggleState = (id: string) => {
     setStates((prev) => {
