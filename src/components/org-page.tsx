@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState } from "react";
 import {
   Building2,
   User,
@@ -73,32 +73,64 @@ const roles = [
   },
 ];
 
+const staticCompetencies: Competency[] = [
+  { id: "1", name: "Making ads and videos", description: "Creating the actual content — videos, images, and creator-style ads", ratings: [
+    { id: "r1", competencyId: "1", timeframe: "now", rating: 2 },
+    { id: "r2", competencyId: "1", timeframe: "1yr", rating: 3 },
+    { id: "r3", competencyId: "1", timeframe: "3yr", rating: 4 },
+  ]},
+  { id: "2", name: "Running ad campaigns", description: "Setting up and managing paid advertising on Meta, Google, TikTok", ratings: [
+    { id: "r4", competencyId: "2", timeframe: "now", rating: 2 },
+    { id: "r5", competencyId: "2", timeframe: "1yr", rating: 3 },
+    { id: "r6", competencyId: "2", timeframe: "3yr", rating: 4 },
+  ]},
+  { id: "3", name: "Analyzing results and testing", description: "Looking at the numbers, running experiments, reporting results", ratings: [
+    { id: "r7", competencyId: "3", timeframe: "now", rating: 2 },
+    { id: "r8", competencyId: "3", timeframe: "1yr", rating: 3 },
+    { id: "r9", competencyId: "3", timeframe: "3yr", rating: 4 },
+  ]},
+  { id: "4", name: "Managing client relationships", description: "Talking with clients, presenting ideas and results", ratings: [
+    { id: "r10", competencyId: "4", timeframe: "now", rating: 1 },
+    { id: "r11", competencyId: "4", timeframe: "1yr", rating: 2 },
+    { id: "r12", competencyId: "4", timeframe: "3yr", rating: 3 },
+  ]},
+  { id: "5", name: "Designing websites and landing pages", description: "Building and improving the pages people land on after clicking an ad", ratings: [
+    { id: "r13", competencyId: "5", timeframe: "now", rating: 1 },
+    { id: "r14", competencyId: "5", timeframe: "1yr", rating: 2 },
+    { id: "r15", competencyId: "5", timeframe: "3yr", rating: 3 },
+  ]},
+  { id: "6", name: "Writing ads and content", description: "Writing the words that appear in ads, on websites, and in emails", ratings: [
+    { id: "r16", competencyId: "6", timeframe: "now", rating: 3 },
+    { id: "r17", competencyId: "6", timeframe: "1yr", rating: 4 },
+    { id: "r18", competencyId: "6", timeframe: "3yr", rating: 5 },
+  ]},
+  { id: "7", name: "Big-picture planning", description: "Deciding the overall marketing approach and long-term plan", ratings: [
+    { id: "r19", competencyId: "7", timeframe: "now", rating: 1 },
+    { id: "r20", competencyId: "7", timeframe: "1yr", rating: 2 },
+    { id: "r21", competencyId: "7", timeframe: "3yr", rating: 3 },
+  ]},
+];
+
 export function OrgPage() {
-  const [competencies, setCompetencies] = useState<Competency[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [competencies, setCompetencies] = useState<Competency[]>(staticCompetencies);
+  const loading = false;
 
-  const fetchCompetencies = useCallback(async () => {
-    const res = await fetch("/api/competencies");
-    const data = await res.json();
-    setCompetencies(data);
-    setLoading(false);
-  }, []);
-
-  useEffect(() => {
-    fetchCompetencies();
-  }, [fetchCompetencies]);
-
-  const updateRating = async (
+  const updateRating = (
     competencyId: string,
     timeframe: string,
     rating: number
   ) => {
-    await fetch(`/api/competencies/${competencyId}/ratings`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ timeframe, rating }),
-    });
-    fetchCompetencies();
+    setCompetencies((prev) =>
+      prev.map((c) => {
+        if (c.id !== competencyId) return c;
+        return {
+          ...c,
+          ratings: c.ratings.map((r) =>
+            r.timeframe === timeframe ? { ...r, rating } : r
+          ),
+        };
+      })
+    );
   };
 
   const getRating = (comp: Competency, timeframe: string) => {
